@@ -4,7 +4,7 @@ import {Router, Route, Switch, Redirect} from "react-router-dom";
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
 import mySaga from './sagas';
-// import './assets/scss/app-styles/styles.scss';
+import 'assets/scss/app-styles/styles.scss';
 // import AuthLayout from "views/Login/LoginWrapper";
 import AdminLayout from "layouts/Admin";
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
