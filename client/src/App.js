@@ -3,7 +3,8 @@ import {createBrowserHistory} from "history";
 import {Router, Route, Switch, Redirect} from "react-router-dom";
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
-import mySaga from './sagas';
+import mySaga from 'sagas';
+import Landing from 'layouts/Landing';
 import 'assets/scss/app-styles/styles.scss';
 // import AuthLayout from "views/Login/LoginWrapper";
 import AdminLayout from "layouts/Admin";
@@ -18,6 +19,7 @@ const App = () => (
         <Router history={hist}>
             <Switch>
                 {/* <Route path="/auth" component={AuthLayout}/> */}
+                <Route exact path='/' component={Landing}/>
                 <Route path="/admin" component={AdminLayout}/>
                 <Redirect from="/" to="/admin/dashboard"/>
             </Switch>
