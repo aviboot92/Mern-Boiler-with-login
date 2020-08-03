@@ -8,18 +8,15 @@ import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import Button from "components/CustomButtons/Button.js";
 
-const Register = ({values, isSubmitting}) => {
+const Login = ({values, isSubmitting}) => {
     return (
         <GridContainer direction="column" justify="center" alignItems="center">
             <Form>
                 <GridItem>
-                    <h1>Sign-UP</h1>
+                    <h1>Sign-IN</h1>
                 </GridItem>
                 <GridItem>
-                    <Typography>Create Your Account</Typography>
-                </GridItem>
-                <GridItem>
-                    <Field type="text" name="userName" placeholder="NAME" component={TextField}/>
+                    <Typography>Sign in to your account</Typography>
                 </GridItem>
                 <GridItem>
                     <Field type="email" name="email" placeholder="EM@IL" component={TextField}/>
@@ -33,69 +30,47 @@ const Register = ({values, isSubmitting}) => {
                 </GridItem>
                 <GridItem>
                     <Field
-                        type="password"
-                        name="password2"
-                        placeholder="Confirm P@$$word"
-                        component={TextField}/>
-                </GridItem>
-                <GridItem>
-                    <Field
-                        name="terms"
-                        checked={values.terms}
+                        name="keepSign"
+                        checked={values.keepSign}
                         color="primary"
                         component={CheckboxWithLabel}
                         Label={{
-                        label: "Accepting terms and conditions"
+                        label: "Keep me Signed in"
                     }}/>
                 </GridItem>
                 <GridItem>
-                    <Button disabled={!values.terms || isSubmitting} type="submit" color="info">Register</Button>
+                    <Button disabled={isSubmitting} type="submit" color="info">Sign In</Button>
                 </GridItem>
             </Form>
             <GridItem>
                 <Typography>
-                    Already have an account?
-                    <Link to="/login">Sign IN</Link>
+                    Don't have an account?
+                    <Link to="/register">Sign UP</Link>
                 </Typography>
             </GridItem>
         </GridContainer>
     )
 }
 
-const FormikRegister = withFormik({
+const FormikLogin = withFormik({
     mapPropsToValues(props) {
-        return {userName: "", email: "", password: "", password2: "", terms: true}
+        return {userName: "", email: "", password: "", keepSign: true}
     },
     validationSchema: Yup
         .object()
         .shape({
-            userName: Yup
-                .string()
-                .required("Name is required"),
             email: Yup
                 .string()
                 .email("Email is not valid")
                 .required("Email address is required"),
             password: Yup
                 .string()
-                .min(8, "Password should be minimum length of 8 charectars")
-                .required("Password is required"),
-            password2: Yup
-                .string()
-                .min(8, "Password should be minimum length of 8 charectars")
-                .required("Password match is required")
+                .required("Password is required")
         }),
     handleSubmit(values, FormikBag) {
         const {resetForm, setErrors, setSubmitting} = FormikBag;
-        setTimeout(() => {
-            if (values.password !== values.password2) {
-                setErrors({password: 'Passwords mismatch', password2: 'Passwords mismatch'});
-            } else {
-                resetForm();
-            }
-            setSubmitting(false);
-        }, 2000)
+        console.log(values);
     }
-})(Register);
+})(Login);
 
-export default FormikRegister;
+export default FormikLogin;
