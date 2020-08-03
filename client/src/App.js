@@ -5,6 +5,7 @@ import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
 import mySaga from 'sagas';
 import Landing from 'layouts/Landing';
+import Register from 'views/Auth/Register';
 import 'assets/scss/app-styles/styles.scss';
 // import AuthLayout from "views/Login/LoginWrapper";
 import AdminLayout from "layouts/Admin";
@@ -20,12 +21,12 @@ const App = () => (
             <Switch>
                 {/* <Route path="/auth" component={AuthLayout}/> */}
                 <Route exact path='/' component={Landing}/>
-                <Route path="/admin" component={AdminLayout}/>
-                <Redirect from="/" to="/admin/dashboard"/>
+                {/* <Route exact path='/login' component={Login}/> */}
+                <Route exact path='/register' component={Register}/>
+                <Route path="/admin" component={AdminLayout}/> {/* <Redirect from="/" to="/admin/dashboard"/> */}
             </Switch>
         </Router>
     </Provider>
 );
-
 
 export default App;

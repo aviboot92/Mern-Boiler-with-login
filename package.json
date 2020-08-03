@@ -19,11 +19,14 @@
     "config": "^3.3.1",
     "express": "^4.17.1",
     "express-validator": "^6.5.0",
+    "formik": "^2.1.5",
+    "formik-material-ui": "^3.0.0-alpha.0",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.18",
     "request": "^2.88.2",
-    "uuid": "^8.1.0"
+    "uuid": "^8.1.0",
+    "yup": "^0.29.2"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
