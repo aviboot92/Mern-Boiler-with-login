@@ -8,11 +8,16 @@
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
+        "chartist": "0.10.1",
+        "classnames": "2.2.6",
         "axios": "^0.19.2",
         "history": "4.10.1",
         "moment": "^2.26.0",
         "node-sass": "4.12.0",
+        "perfect-scrollbar": "1.5.0",
+        "prop-types": "15.7.2",
         "react": "^16.13.1",
+        "react-chartist": "0.14.3",
         "react-dom": "^16.13.1",
         "react-google-maps": "9.4.5",
         "react-moment": "^0.9.7",
@@ -29,7 +34,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+        "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf yarn.lock && yarn install && yarn start",
         "lint:check": "eslint . --ext=js,jsx;  exit 0",
         "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
         "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
@@ -40,15 +45,9 @@
     },
     "browserslist": {
         "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
+            ">0.2%", "not dead", "not op_mini all"
         ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+        "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
     },
     "proxy": "http://localhost:5000"
 }
