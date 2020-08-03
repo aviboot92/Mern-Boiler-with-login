@@ -39,12 +39,12 @@ const Register = ({values, isSubmitting}) => {
                 </GridItem>
                 <GridItem>
                     <label>
-                        <Field type="checkbox" name="terms" checked={values.terms}/>
+                        <Field type="checkbox" name="terms" checked={values.terms} color="primary" component={Checkbox}/>
                         Accepting terms and conditions
                     </label>
                 </GridItem>
                 <GridItem>
-                    <Button disabled={!values.terms || isSubmitting} type="submit">Register</Button>
+                    <Button disabled={!values.terms || isSubmitting} type="submit" color="info">Register</Button>
                 </GridItem>
             </Form>
             <GridItem>
