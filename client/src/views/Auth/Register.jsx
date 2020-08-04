@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {Typography} from '@material-ui/core/';
 import {withFormik, Form, Field} from "formik";
 import {TextField, CheckboxWithLabel} from 'formik-material-ui';
@@ -7,6 +8,8 @@ import * as Yup from "yup";
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import Button from "components/CustomButtons/Button.js";
+import {registerUser} from 'redux/actions/auth'; 
+
 
 const Register = ({values, isSubmitting}) => {
     return (
@@ -41,6 +44,7 @@ const Register = ({values, isSubmitting}) => {
                 <GridItem>
                     <Field
                         name="terms"
+                        type="checkbox"
                         checked={values.terms}
                         color="primary"
                         component={CheckboxWithLabel}
@@ -86,16 +90,26 @@ const FormikRegister = withFormik({
                 .required("Password match is required")
         }),
     handleSubmit(values, FormikBag) {
-        const {resetForm, setErrors, setSubmitting} = FormikBag;
-        setTimeout(() => {
+        const {props, resetForm, setErrors, setSubmitting} = FormikBag;
             if (values.password !== values.password2) {
                 setErrors({password: 'Passwords mismatch', password2: 'Passwords mismatch'});
             } else {
+                const payload = {
+                    name: values.userName,
+                    email: values.email,
+                    password: values.password
+                }
+                props.registerUser(payload);
                 resetForm();
             }
             setSubmitting(false);
-        }, 2000)
     }
 })(Register);
 
-export default FormikRegister;
+const mapDispachToProps = dispatch => {
+    return{
+        registerUser: (payload) => dispatch(registerUser(payload))
+    }
+}
+
+export default connect(null, mapDispachToProps)(FormikRegister);

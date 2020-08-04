@@ -23,7 +23,7 @@ const App = () => (
     <Provider store={store}>
         <SnackbarProvider maxSnack={3} dense>
         <Snackbar />
-        <Tester />
+        {/* <Tester /> */}
         <Router history={history}>
             <Switch>
                 <Route exact path='/' component={Landing}/>
