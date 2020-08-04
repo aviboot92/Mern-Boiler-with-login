@@ -1,4 +1,5 @@
-import { takeLatest, put, delay, takeEvery } from "redux-saga/effects";
+import {AGE_DOWN} from 'variables/testVariables';
+import { takeLatest, put, delay} from "redux-saga/effects";
 
 
 function* ageDownSync() {
@@ -7,5 +8,5 @@ function* ageDownSync() {
   }
 
   export function* watchAgeDown() {
-    yield takeLatest("AGE_DOWN", ageDownSync);
+    yield takeLatest(AGE_DOWN, ageDownSync);
   }

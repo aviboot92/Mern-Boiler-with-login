@@ -1,6 +1,7 @@
 import React from "react";
 import {createBrowserHistory} from "history";
 import {Router, Route, Switch} from "react-router-dom";
+import { SnackbarProvider } from 'notistack';
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
 import mySaga from 'redux/sagas';
@@ -18,6 +19,7 @@ sagaMiddleware.run(mySaga);
 
 const App = () => (
     <Provider store={store}>
+        <SnackbarProvider maxSnack={3}>
         <Router history={hist}>
             <Switch>
                 <Route exact path='/' component={Landing}/>
@@ -26,6 +28,7 @@ const App = () => (
                 <Route path="/admin" component={AdminLayout}/>
             </Switch>
         </Router>
+        </SnackbarProvider>
     </Provider>
 );
 
