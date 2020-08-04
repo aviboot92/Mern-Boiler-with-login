@@ -45,7 +45,7 @@ const Register = ({values, isSubmitting}) => {
                         color="primary"
                         component={CheckboxWithLabel}
                         Label={{
-                        label: "Accepting terms and conditions"
+                        label: "Accepting terms and conditions*"
                     }}/>
                 </GridItem>
                 <GridItem>

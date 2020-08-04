@@ -3,7 +3,7 @@ import {createBrowserHistory} from "history";
 import {Router, Route, Switch} from "react-router-dom";
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
-import mySaga from 'sagas';
+import mySaga from 'redux/sagas';
 import Landing from 'layouts/Landing';
 import Register from 'views/Auth/Register';
 import Login from 'views/Auth/Login';

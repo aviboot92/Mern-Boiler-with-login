@@ -5,7 +5,7 @@ import { all, fork } from "redux-saga/effects";
 import * as testSampleSagas from "./testSampleSagas";
 
 
-export default function* rootSaga() {
+export default function* mySaga() {
   yield all(
     [
       ...Object.values(testSampleSagas),
