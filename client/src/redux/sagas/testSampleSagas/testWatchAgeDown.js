@@ -10,9 +10,9 @@ const notification = {
 }
 
 function * ageDownSync() {
-    yield put({type: "AGE_DOWN_SYNC", value: 1});
-    yield delay(1000);
     yield put(enqueueSnackbar(notification));
+    yield delay(1000);
+    yield put({type: "AGE_DOWN_SYNC", value: 1});
 }
 
 export function * watchAgeDown() {

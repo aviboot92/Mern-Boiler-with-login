@@ -16,15 +16,15 @@ import AdminLayout from "layouts/Admin";
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
 
 const store = configureStore();
-const hist = createBrowserHistory();
+const history = createBrowserHistory();
 sagaMiddleware.run(mySaga);
 
 const App = () => (
     <Provider store={store}>
-        <SnackbarProvider maxSnack={3}>
+        <SnackbarProvider maxSnack={3} dense>
         <Snackbar />
         <Tester />
-        <Router history={hist}>
+        <Router history={history}>
             <Switch>
                 <Route exact path='/' component={Landing}/>
                 <Route exact path='/login' component={Login}/>
