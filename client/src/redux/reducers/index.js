@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import TestSampleReducer from "./testSampleReducer";
-import Alerts from "./alerts";
+import testSampleReducer from "./testSampleReducer";
+import alerts from "./alerts";
 
 const rootReducer = combineReducers({
-  TestSampleReducer,
-  Alerts
+  testSampleReducer,
+  alerts
 });
 
 export default rootReducer;

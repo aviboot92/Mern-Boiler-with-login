@@ -1,20 +1,22 @@
-import {ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR} from 'variables/alerts';
+import { ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR } from 'variables/alerts';
 
-export const enqueueSnackbar = (notification) => dispatch => {
-    const key = notification.options && notification.options.key;
-    dispatch({
+
+export const enqueueSnackbar = (notification) => {
+    return {
         type: ENQUEUE_SNACKBAR,
         notification: {
             ...notification,
-            key: key || new Date().getTime() + Math.random()
-        }
-    });
+        },
+    };
 };
 
-export const closeSnackbar = key => dispatch => (dispatch({
+export const closeSnackbar = key => ({
     type: CLOSE_SNACKBAR,
     dismissAll: !key, // dismiss all if no key has been defined
-    key
-}));
+    key,
+});
 
-export const removeSnackbar = key => dispatch => ({type: REMOVE_SNACKBAR, key});
+export const removeSnackbar = key => ({
+    type: REMOVE_SNACKBAR,
+    key,
+});

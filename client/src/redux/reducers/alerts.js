@@ -1,5 +1,6 @@
 import {ENQUEUE_SNACKBAR, CLOSE_SNACKBAR, REMOVE_SNACKBAR} from 'variables/alerts';
 
+
 const defaultState = {
     notifications: [],
 };
@@ -12,7 +13,7 @@ export default (state = defaultState, action) => {
                 notifications: [
                     ...state.notifications,
                     {
-                        key: action.key,
+                        key: new Date().getTime() + Math.random(),
                         ...action.notification,
                     },
                 ],

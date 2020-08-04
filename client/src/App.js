@@ -8,8 +8,10 @@ import mySaga from 'redux/sagas';
 import Landing from 'layouts/Landing';
 import Register from 'views/Auth/Register';
 import Login from 'views/Auth/Login';
+import Snackbar from "components/Snackbar/Notifier";
 import 'assets/scss/app-styles/styles.scss';
 // import AuthLayout from "views/Login/LoginWrapper";
+import Tester from 'components/Tester';
 import AdminLayout from "layouts/Admin";
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
 
@@ -20,6 +22,8 @@ sagaMiddleware.run(mySaga);
 const App = () => (
     <Provider store={store}>
         <SnackbarProvider maxSnack={3}>
+        <Snackbar />
+        <Tester />
         <Router history={hist}>
             <Switch>
                 <Route exact path='/' component={Landing}/>
