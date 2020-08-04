@@ -4,20 +4,19 @@ import {registerUserApi} from 'api/auth';
 import {enqueueSnackbar} from 'redux/actions/alerts';
 import {REGISTER_USER} from 'variables/auth';
 
-const notification = {
-    message: 'Age Down.',
-    options: {
-        variant: 'success'
-    }
-}
+
 function * actionWatcher(action) {
     const response = yield call(registerUserApi, action.payload);
     const isValid = yield call(validateResponse, response);
     console.log(response, `outside`);
     if (isValid) {
-        yield put(enqueueSnackbar(notification));
+        yield put(enqueueSnackbar({
+            message: 'User is created successfully',
+            options: {
+                variant: 'success'
+            }
+        }));
     } else {
-        console.log(response, `inside`);
         const errors = response.data.errors;
         yield all(errors.map((error) => put(enqueueSnackbar({
             message: error.msg,

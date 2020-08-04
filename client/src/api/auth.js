@@ -1,15 +1,10 @@
-import axios from 'axios';
+import axios from './index';
 
 /* ----you can access all global_settings api methods--- */
 const authMethods = {
-    registerUser: '/api/users',
+    registerUser: '/users',
 };
 
-const config = {
-    headers: {
-        'Content-Type': 'application/json'
-    }
-};
 
 function registerUserApi(data) {
     return axios.request({
