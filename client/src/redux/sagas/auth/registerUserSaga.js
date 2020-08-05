@@ -2,7 +2,7 @@ import {takeLatest, put, call, all} from "redux-saga/effects";
 import {validateResponse} from './../validators';
 import {registerUserApi} from 'api/auth';
 import {enqueueSnackbar} from 'redux/actions/alerts';
-import {REGISTER_USER} from 'variables/auth';
+import {REGISTER_USER, REGISTER_SUCCESS} from 'variables/auth';
 
 
 function * actionWatcher(action) {
@@ -10,6 +10,8 @@ function * actionWatcher(action) {
     const isValid = yield call(validateResponse, response);
     console.log(response, `outside`);
     if (isValid) {
+        const {token} = response.data;
+        yield put({type:REGISTER_SUCCESS, payload:{token}})
         yield put(enqueueSnackbar({
             message: 'User is created successfully',
             options: {

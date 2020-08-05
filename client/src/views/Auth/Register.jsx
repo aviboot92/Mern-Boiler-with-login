@@ -8,7 +8,8 @@ import * as Yup from "yup";
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import Button from "components/CustomButtons/Button.js";
-import {registerUser} from 'redux/actions/auth'; 
+import {registerUser} from 'redux/actions/auth';
+import PropTypes from 'prop-types'; 
 
 
 const Register = ({values, isSubmitting}) => {
@@ -25,7 +26,7 @@ const Register = ({values, isSubmitting}) => {
                     <Field type="text" name="userName" placeholder="NAME" component={TextField}/>
                 </GridItem>
                 <GridItem>
-                    <Field type="email" name="email" placeholder="EM@IL" component={TextField}/>
+                    <Field type="email" name="email" placeholder="EM@!L" component={TextField}/>
                 </GridItem>
                 <GridItem>
                     <Field
@@ -110,6 +111,10 @@ const mapDispachToProps = dispatch => {
     return{
         registerUser: (payload) => dispatch(registerUser(payload))
     }
+}
+
+FormikRegister.propTypes = {
+    registerUser: PropTypes.func.isRequired
 }
 
 export default connect(null, mapDispachToProps)(FormikRegister);

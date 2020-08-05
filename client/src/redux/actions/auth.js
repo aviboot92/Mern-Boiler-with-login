@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
     REGISTER_USER,
 } from 'variables/auth';
