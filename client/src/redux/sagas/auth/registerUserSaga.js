@@ -8,7 +8,6 @@ import {REGISTER_USER, REGISTER_SUCCESS} from 'variables/auth';
 function * actionWatcher(action) {
     const response = yield call(registerUserApi, action.payload);
     const isValid = yield call(validateResponse, response);
-    console.log(response, `outside`);
     if (isValid) {
         const {token} = response.data;
         yield put({type:REGISTER_SUCCESS, payload:{token}})
