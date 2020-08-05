@@ -2,7 +2,7 @@ import {takeLatest, put, call, all} from "redux-saga/effects";
 import {validateResponse} from './../validators';
 import {registerUserApi} from 'api/auth';
 import {enqueueSnackbar} from 'redux/actions/alerts';
-import {REGISTER_USER, REGISTER_SUCCESS} from 'variables/auth';
+import {REGISTER_USER, REGISTER_SUCCESS, LOAD_USER} from 'variables/auth';
 
 
 function * actionWatcher(action) {
@@ -17,6 +17,7 @@ function * actionWatcher(action) {
                 variant: 'success'
             }
         }));
+        yield put({type: LOAD_USER})
     } else {
         const errors = response.data.errors;
         yield all(errors.map((error) => put(enqueueSnackbar({
