@@ -5,13 +5,12 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
 } from 'variables/auth';
 
 const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: false,
-    loading: true,
     user: null
 }
 
@@ -21,7 +20,6 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isAuthenticated: true,
-                loading: false,
                 user: action.payload
             }
 
@@ -33,7 +31,6 @@ export default function (state = initialState, action) {
                     ...state,
                     ...action.payload,
                     isAuthenticated: true,
-                    loading: false
                 }
             }
 
@@ -47,8 +44,7 @@ export default function (state = initialState, action) {
                     ...state,
                     token: null,
                     isAuthenticated: false,
-                    loading: false,
-                    // user: null
+                    user: null
                 }
             }
 

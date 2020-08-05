@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {createBrowserHistory} from "history";
 import {Router, Route, Switch} from "react-router-dom";
 import {SnackbarProvider} from 'notistack';
@@ -14,13 +14,23 @@ import 'assets/scss/app-styles/styles.scss';
 import Tester from 'components/Tester';
 import AdminLayout from "layouts/Admin";
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
+import setAuthToken from './utils/setAuthToken';
 import {Button} from '@material-ui/core';
+import {loadUser} from 'redux/actions/auth';
 
 const store = configureStore();
 const history = createBrowserHistory();
 sagaMiddleware.run(mySaga);
 
+if(localStorage.token){
+    setAuthToken(localStorage.token);
+}
+
 const App = () => {
+
+    useEffect(()=>{
+        store.dispatch(loadUser());
+    },[]);
 
     // add action to all snackbars
     const notistackRef = React.createRef();
@@ -44,7 +54,7 @@ const App = () => {
             )}>
                 <Snackbar/> 
 
-                <Tester />
+                {/* <Tester /> */}
                 <Router history={history}>
                     <Switch>
                         <Route exact path='/' component={Landing}/>

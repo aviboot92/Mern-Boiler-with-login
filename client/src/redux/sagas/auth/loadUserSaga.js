@@ -3,16 +3,19 @@ import {validateResponse} from './../validators';
 import {loadUserApi} from 'api/auth';
 import {enqueueSnackbar} from 'redux/actions/alerts';
 import {LOAD_USER, USER_LOADED, AUTH_ERROR} from 'variables/auth';
+import {LOAD_ON, LOAD_OFF} from 'variables/alerts';
 import setAuthToken from 'utils/setAuthToken';
 
 function * actionWatcher(action) {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
     }
+    yield put({type: LOAD_ON});
     const response = yield call(loadUserApi);
     const isValid = yield call(validateResponse, response);
     if (isValid) {
         yield put({type: USER_LOADED, payload: response.data});
+        yield put({type: LOAD_OFF});
         yield put(enqueueSnackbar({
             message: 'User loaded successfully',
             options: {
@@ -20,11 +23,12 @@ function * actionWatcher(action) {
             }
         }));
     } else {
-        put({type: AUTH_ERROR});
+        yield put({type: AUTH_ERROR});
+        yield put({type: LOAD_OFF});
         yield put(enqueueSnackbar({
-            message: 'Authorization Error',
+            message: 'Authorization Error, Please Sign In again.',
             options: {
-                variant: 'error'
+                variant: 'warning'
             }
         }));
     }

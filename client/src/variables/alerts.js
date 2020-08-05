@@ -1,3 +1,5 @@
 export const ENQUEUE_SNACKBAR = 'ENQUEUE_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 export const REMOVE_SNACKBAR = 'REMOVE_SNACKBAR';
+export const LOAD_OFF = 'LOAD_OFF'
+export const LOAD_ON = 'LOAD_ON'
