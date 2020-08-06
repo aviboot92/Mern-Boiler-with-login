@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://avi12345:avi12345@devconnector-cqzz8.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "jwt-secret": "mySecretToken",
-    "githubClientId": "51f7639c7d98007f8dff",
-    "githubSecret": "357724f3e30801c7ddfd6584968b2eff3de47d42"
-}
