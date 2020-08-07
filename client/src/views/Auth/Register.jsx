@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Typography} from '@material-ui/core/';
 import {withFormik, Form, Field} from "formik";
@@ -12,7 +12,12 @@ import {registerUser} from 'redux/actions/auth';
 import PropTypes from 'prop-types'; 
 
 
-const Register = ({values, isSubmitting}) => {
+const Register = ({values, isSubmitting, isAuthenticated}) => {
+
+    if(isAuthenticated){
+        return <Redirect to='/admin' />
+    }
+
     return (
         <GridContainer direction="column" justify="center" alignItems="center">
             <Form>
@@ -107,6 +112,10 @@ const FormikRegister = withFormik({
     }
 })(Register);
 
+const mapStateToProps = (state) =>({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
 const mapDispachToProps = dispatch => {
     return{
         registerUser: (payload) => dispatch(registerUser(payload))
@@ -114,7 +123,8 @@ const mapDispachToProps = dispatch => {
 }
 
 FormikRegister.propTypes = {
-    registerUser: PropTypes.func.isRequired
+    registerUser: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool 
 }
 
-export default connect(null, mapDispachToProps)(FormikRegister);
+export default connect(mapStateToProps, mapDispachToProps)(FormikRegister);

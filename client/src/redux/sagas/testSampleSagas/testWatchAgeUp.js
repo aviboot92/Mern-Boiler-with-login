@@ -1,4 +1,4 @@
-import {put, delay, takeEvery} from "redux-saga/effects";
+import {put, takeEvery} from "redux-saga/effects";
 import {AGE_UP} from 'variables/testVariables';
 import {ENQUEUE_SNACKBAR} from 'variables/alerts';
 

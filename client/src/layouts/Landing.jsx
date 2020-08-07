@@ -1,7 +1,5 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {Link, Redirect} from 'react-router-dom';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Landing = (props) => {
 
@@ -24,6 +22,4 @@ const Landing = (props) => {
     )
 }
 
-// Landing.propTypes = {   isAuthenticated: PropTypes.bool, }
-
-export default connect(null)(Landing)
+export default Landing;
