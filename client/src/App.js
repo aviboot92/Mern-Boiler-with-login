@@ -5,7 +5,7 @@ import {SnackbarProvider} from 'notistack';
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
 import mySaga from 'redux/sagas';
-import Landing from 'layouts/Landing';
+import Landing from 'views/Auth/Landing';
 import Register from 'views/Auth/Register';
 import Login from 'views/Auth/Login';
 import Snackbar from "components/Snackbar/Notifier";
@@ -22,15 +22,15 @@ const store = configureStore();
 const history = createBrowserHistory();
 sagaMiddleware.run(mySaga);
 
-if(localStorage.token){
+if (localStorage.token) {
     setAuthToken(localStorage.token);
 }
 
 const App = () => {
 
-    useEffect(()=>{
+    useEffect(() => {
         store.dispatch(loadUser());
-    },[]);
+    }, []);
 
     // add action to all snackbars
     const notistackRef = React.createRef();
@@ -52,16 +52,14 @@ const App = () => {
                     Dismiss
                 </Button>
             )}>
-                <Snackbar/> 
-
-                {/* <Tester /> */}
+                <Snackbar/> {/* <Tester /> */}
                 <Router history={history}>
                     <Switch>
                         <Route exact path='/' component={Landing}/>
                         <Route exact path='/login' component={Login}/>
                         <Route exact path='/register' component={Register}/>
-                        <Route path="/admin" component={AdminLayout}/>
                     </Switch>
+                    <Route path="/admin" component={AdminLayout}/>
                 </Router>
             </SnackbarProvider>
         </Provider>
