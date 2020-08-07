@@ -3,7 +3,8 @@ import axios from './index';
 /* ----you can access all global_settings api methods--- */
 const authMethods = {
     registerUser: '/users',
-    loadUser: '/auth'
+    loadUser: '/auth',
+    loginUser: '/auth'
 };
 
 
@@ -22,4 +23,12 @@ function loadUserApi() {
     }).catch(error => error.response) ;
 }
 
-export {registerUserApi, loadUserApi};
+function loginUserApi(data) {
+    return axios.request({
+        method: 'post',
+        url: authMethods.loginUser,
+        data
+    }).catch(error => error.response) ;
+}
+
+export {registerUserApi, loadUserApi, loginUserApi};

@@ -16,12 +16,6 @@ function * actionWatcher(action) {
     if (isValid) {
         yield put({type: USER_LOADED, payload: response.data});
         yield put({type: LOAD_OFF});
-        yield put(enqueueSnackbar({
-            message: 'User loaded successfully',
-            options: {
-                variant: 'info'
-            }
-        }));
     } else {
         yield put({type: AUTH_ERROR});
         yield put({type: LOAD_OFF});

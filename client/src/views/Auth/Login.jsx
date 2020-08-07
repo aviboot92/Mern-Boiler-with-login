@@ -1,5 +1,7 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types'; 
+import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
 import {Typography} from '@material-ui/core/';
 import {withFormik, Form, Field} from "formik";
 import {TextField, CheckboxWithLabel} from 'formik-material-ui';
@@ -7,8 +9,16 @@ import * as Yup from "yup";
 import GridContainer from 'components/Grid/GridContainer';
 import GridItem from 'components/Grid/GridItem';
 import Button from "components/CustomButtons/Button.js";
+import {loginUser} from 'redux/actions/auth';
 
-const Login = ({values, isSubmitting}) => {
+
+const Login = ({values, isSubmitting, isAuthenticated}) => {
+
+    // Redirect if is authenticated
+    if(isAuthenticated){
+        return <Redirect to='/admin' />
+    }
+
     return (
         <GridContainer direction="column" justify="center" alignItems="center">
             <Form>
@@ -68,9 +78,31 @@ const FormikLogin = withFormik({
                 .required("Password is required")
         }),
     handleSubmit(values, FormikBag) {
-        const {resetForm, setErrors, setSubmitting} = FormikBag;
-        console.log(values);
+             const {props, resetForm, setSubmitting} = FormikBag;
+                const payload = {
+                    email: values.email,
+                    password: values.password,
+                    keepSignIn: values.keepSign
+                }
+                props.loginUser(payload);
+                resetForm();           
+            setSubmitting(false);
     }
 })(Login);
 
-export default FormikLogin;
+const mapStateToProps = (state) =>({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+const mapDispachToProps = dispatch => {
+    return{
+        loginUser: (payload) => dispatch(loginUser(payload))
+    }
+}
+
+FormikLogin.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+}
+
+export default connect(mapStateToProps, mapDispachToProps)(FormikLogin);

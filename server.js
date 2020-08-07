@@ -7,10 +7,13 @@ require('dotenv').config();
 // Connect DataBase
 connectDB();
 
-// Init Middleware
-app.use(express.json({ extended: false}));
-
-app.get('/', (req, res) => res.send("I am Server"));
+// Configure body parsing for AJAX requests
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// Serve up static assets
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 //  Define Routes
 app.use('/api/users' , require('./routes/api/users'));
