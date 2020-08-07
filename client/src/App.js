@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {createBrowserHistory} from "history";
 import {Router, Route, Switch} from "react-router-dom";
 import {SnackbarProvider} from 'notistack';
 import configureStore, {sagaMiddleware} from './redux/store';
@@ -17,9 +16,9 @@ import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
 import setAuthToken from './utils/setAuthToken';
 import {Button} from '@material-ui/core';
 import {loadUser} from 'redux/actions/auth';
+import history from 'historyConfig';
 
 const store = configureStore();
-const history = createBrowserHistory();
 sagaMiddleware.run(mySaga);
 
 if (localStorage.token) {

@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 // @material-ui/core components
+import {useDispatch} from 'react-redux';
 import { makeStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
@@ -18,12 +19,13 @@ import Search from "@material-ui/icons/Search";
 // core components
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
+import {logoutUser} from 'redux/actions/auth';
 
 const useStyles = makeStyles(styles);
 
 export default function AdminNavbarLinks() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [openNotification, setOpenNotification] = React.useState(null);
   const [openProfile, setOpenProfile] = React.useState(null);
@@ -47,6 +49,11 @@ export default function AdminNavbarLinks() {
   const handleCloseProfile = () => {
     setOpenProfile(null);
   };
+  // Logout
+  const handleLogout = () => {
+    console.log("I am logout");
+    dispatch(logoutUser());
+  }
   return (
     <div>
       <div className={classes.searchWrapper}>
@@ -207,7 +214,7 @@ export default function AdminNavbarLinks() {
                     </MenuItem>
                     <Divider light />
                     <MenuItem
-                      onClick={handleCloseProfile}
+                      onClick={handleLogout}
                       className={classes.dropdownItem}
                     >
                       Logout
