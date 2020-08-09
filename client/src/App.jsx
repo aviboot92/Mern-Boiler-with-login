@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {SnackbarProvider} from 'notistack';
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
@@ -12,6 +12,7 @@ import 'assets/scss/app-styles/styles.scss';
 // import AuthLayout from "views/Login/LoginWrapper";
 import Tester from 'components/Tester';
 import AdminLayout from "layouts/Admin";
+import NotFoundPage from "layouts/NotFoundPage";
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
 import setAuthToken from './utils/setAuthToken';
 import {Button} from '@material-ui/core';
@@ -57,8 +58,9 @@ const App = () => {
                         <Route exact path='/' component={Landing}/>
                         <Route exact path='/login' component={Login}/>
                         <Route exact path='/register' component={Register}/>
+                        <Route path="/admin" component={AdminLayout}/>
+                        <Route path="*" component={NotFoundPage} />
                     </Switch>
-                    <Route path="/admin" component={AdminLayout}/>
                 </Router>
             </SnackbarProvider>
         </Provider>
