@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Router, Route, Switch} from "react-router-dom";
 import {SnackbarProvider} from 'notistack';
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
