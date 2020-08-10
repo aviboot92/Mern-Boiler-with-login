@@ -13,8 +13,8 @@ const Landing = (props) => {
                         developers
                     </p>
                     <div className="buttons">
-                        <Link to="/register" className="btn btn-primary">Sign Up</Link>
-                        <Link to="/login" className="btn btn-light">Login</Link>
+                        <Link to="/auth/register" className="btn btn-primary">Sign Up</Link>
+                        <Link to="/auth/login" className="btn btn-light">Login</Link>
                     </div>
                 </div>
             </div>

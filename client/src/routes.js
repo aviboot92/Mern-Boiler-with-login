@@ -39,18 +39,21 @@ import NotificationsPage from "views/Notifications/Notifications.js";
 
 const routesConfig = {
     authRoutes: [
+        // {
+        //     path: "/",
+        //     name: "Landing",
+        //     component: LandingPage
+        // }, 
         {
-            path: "/landing",
-            name: "Landing",
-            component: LandingPage
-        }, {
             path: "/login",
             name: "Login",
-            component: LoginPage
+            component: LoginPage,
+            layout: "/auth"
         }, {
             path: "/register",
             name: "Register",
-            component: RegisterPage
+            component: RegisterPage,
+            layout: "/auth"
         }
     ],
     dashboardRoutes: [

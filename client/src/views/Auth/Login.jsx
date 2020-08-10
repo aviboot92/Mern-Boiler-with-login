@@ -55,7 +55,7 @@ const Login = ({values, isSubmitting, isAuthenticated}) => {
             <GridItem>
                 <Typography>
                     Don't have an account?
-                    <Link to="/register">Sign UP</Link>
+                    <Link to="/auth/register">Sign UP</Link>
                 </Typography>
             </GridItem>
         </GridContainer>

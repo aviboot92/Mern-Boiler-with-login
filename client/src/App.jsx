@@ -1,17 +1,15 @@
 import React, {useEffect} from "react";
-import { Router, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch, Redirect} from "react-router-dom";
 import {SnackbarProvider} from 'notistack';
 import configureStore, {sagaMiddleware} from './redux/store';
 import {Provider} from 'react-redux';
 import mySaga from 'redux/sagas';
 import Landing from 'views/Auth/Landing';
-import Register from 'views/Auth/Register';
-import Login from 'views/Auth/Login';
 import Snackbar from "components/Snackbar/Notifier";
 import 'assets/scss/app-styles/styles.scss';
-// import AuthLayout from "views/Login/LoginWrapper";
 import Tester from 'components/Tester';
 import AdminLayout from "layouts/Admin";
+import AuthLayout from "layouts/Auth";
 import NotFoundPage from "layouts/NotFoundPage";
 import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
 import setAuthToken from './utils/setAuthToken';
@@ -56,10 +54,9 @@ const App = () => {
                 <Router history={history}>
                     <Switch>
                         <Route exact path='/' component={Landing}/>
-                        <Route exact path='/login' component={Login}/>
-                        <Route exact path='/register' component={Register}/>
+                        <Route path="/auth" component={AuthLayout}/>
                         <Route path="/admin" component={AdminLayout}/>
-                        <Route path="*" component={NotFoundPage} />
+                        <Route path="*" component={NotFoundPage}/>
                     </Switch>
                 </Router>
             </SnackbarProvider>
