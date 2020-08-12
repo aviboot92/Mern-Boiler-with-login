@@ -1,7 +1,4 @@
-function validateResponse(response, customValidator) {
-  if (customValidator && !customValidator(response)) {
-    return false;
-  }
+function validateResponse(response) {
 
   switch (response.status) {
     case 200:
