@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 
+
+
 // Set config defaults when creating the instance
 const baseAxios = axios.create({
     baseURL: '/api',
@@ -8,7 +10,6 @@ const baseAxios = axios.create({
         'Content-Type': 'application/json'
     }
 });
-
 
 
 export default baseAxios;
