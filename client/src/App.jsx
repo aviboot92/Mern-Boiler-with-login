@@ -20,13 +20,10 @@ import history from 'historyConfig';
 const store = configureStore();
 sagaMiddleware.run(mySaga);
 
-if (localStorage.token) {
-    setAuthToken(localStorage.token);
-}
-
 const App = () => {
-
+    
     useEffect(() => {
+        setAuthToken(localStorage.token);
         store.dispatch(loadUser());
     }, []);
 
@@ -52,8 +49,8 @@ const App = () => {
             )}>
                 <Snackbar/> {/* <Tester /> */}
                 <Router history={history}>
-                    <Switch>
                         <Route exact path='/' component={Landing}/>
+                    <Switch>
                         <Route path="/auth" component={AuthLayout}/>
                         <Route path="/admin" component={AdminLayout}/>
                         <Route path="*" component={NotFoundPage}/>

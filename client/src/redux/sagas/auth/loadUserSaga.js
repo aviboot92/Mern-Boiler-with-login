@@ -4,13 +4,9 @@ import {loadUserApi} from 'api/auth';
 import {enqueueSnackbar} from 'redux/actions/alerts';
 import {LOAD_USER, USER_LOADED, AUTH_ERROR} from 'variables/auth';
 import {LOAD_ON, LOAD_OFF} from 'variables/alerts';
-import setAuthToken from 'utils/setAuthToken';
 
 
 function * actionWatcher(action) {
-    if (localStorage.token) {
-        setAuthToken(localStorage.token);
-    }
     yield put({type: LOAD_ON});
     const response = yield call(loadUserApi);
     const isValid = yield call(validateResponse, response);

@@ -20,7 +20,7 @@ const switchRoutes = (
 
 const AuthRoutes = () => ( <> {
     switchRoutes
-} < />
+} </>
 );
 
 export default AuthRoutes;
