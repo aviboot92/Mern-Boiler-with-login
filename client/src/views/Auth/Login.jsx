@@ -40,6 +40,7 @@ const Login = ({values, isSubmitting, isAuthenticated}) => {
                 </GridItem>
                 <GridItem>
                     <Field
+                        type="checkbox"
                         name="keepSign"
                         checked={values.keepSign}
                         color="primary"

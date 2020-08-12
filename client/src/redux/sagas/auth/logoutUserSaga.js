@@ -1,4 +1,4 @@
-import {takeLatest, put, call} from "redux-saga/effects";
+import {takeLatest, put} from "redux-saga/effects";
 import {enqueueSnackbar} from 'redux/actions/alerts';
 import {LOGOUT_USER, LOGOUT} from 'variables/auth';
 import {LOAD_ON, LOAD_OFF} from 'variables/alerts';
