@@ -21,9 +21,9 @@ const store = configureStore();
 sagaMiddleware.run(mySaga);
 
 const App = () => {
-    
+    // It should be outside useEffect of componentDidMount and it will remove token from axios headers if it is not available
+    setAuthToken(localStorage.token);
     useEffect(() => {
-        setAuthToken(localStorage.token);
         store.dispatch(loadUser());
     }, []);
 
