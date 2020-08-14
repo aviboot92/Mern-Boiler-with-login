@@ -6,12 +6,12 @@ import {Provider} from 'react-redux';
 import mySaga from 'redux/sagas';
 import Landing from 'views/Auth/Landing';
 import Snackbar from "components/Snackbar/Notifier";
-import 'assets/scss/app-styles/styles.scss';
 import Tester from 'components/Tester';
 import AdminLayout from "layouts/Admin";
 import AuthLayout from "layouts/Auth";
 import NotFoundPage from "layouts/NotFoundPage";
-import "assets/scss/material-dashboard-pro-react.scss?v=1.8.0";
+import "assets/css/material-dashboard-react.css?v=1.9.0";
+import 'assets/scss/app-styles/styles.scss';
 import setAuthToken from './utils/setAuthToken';
 import {Button} from '@material-ui/core';
 import {loadUser} from 'redux/actions/auth';
@@ -49,8 +49,8 @@ const App = () => {
             )}>
                 <Snackbar/> {/* <Tester /> */}
                 <Router history={history}>
-                        <Route exact path='/' component={Landing}/>
                     <Switch>
+                        <Route exact path='/' component={Landing}/>
                         <Route path="/auth" component={AuthLayout}/>
                         <Route path="/admin" component={AdminLayout}/>
                         <Route path="*" component={NotFoundPage}/>
