@@ -1,9 +1,10 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const routes = require("./routes");
 
 const app = express();
-
 require('dotenv').config();
+
 // Connect DataBase
 connectDB();
 
@@ -15,11 +16,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-//  Define Routes
-app.use('/api/users' , require('./routes/api/users'));
-app.use('/api/profile' , require('./routes/api/profile'));
-app.use('/api/posts' , require('./routes/api/posts'));
-app.use('/api/auth' , require('./routes/api/auth'));
+// Add routes, both API and view
+app.use(routes);
+
 
 const PORT = process.env.PORT || 5050;
 
